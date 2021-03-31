@@ -1,5 +1,6 @@
 package com.study.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.study.dao.BookMapper;
 import com.study.pojo.Books;
 
@@ -14,6 +15,7 @@ public class BookServiceImpl implements BookService {
     }
 
     public int addBook(Books book) {
+
         return bookMapper.addBook(book);
     }
 
@@ -22,7 +24,9 @@ public class BookServiceImpl implements BookService {
     }
 
     public int updateBook(Books books) {
+
         return bookMapper.updateBook(books);
+
     }
 
     public Books queryBookById(int id) {
