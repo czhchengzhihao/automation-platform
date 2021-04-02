@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,10 +45,11 @@ public class BookController {
     public String toUpdateBook(Model model, int id) {
         Books books = bookService.queryBookById(id);
         System.out.println(books);
-        model.addAttribute("book",books );
+        model.addAttribute("book", books);
         return "updateBook";
     }
-  @RequestMapping("/updateBook")
+
+    @RequestMapping("/updateBook")
     public String updateBook(Model model, Books book) {
         System.out.println(book);
         bookService.updateBook(book);
@@ -55,9 +57,24 @@ public class BookController {
         model.addAttribute("books", books);
         return "redirect:/book/allBook";
     }
+
     @RequestMapping("/del/{bookId}")
     public String deleteBook(@PathVariable("bookId") int id) {
         bookService.deleteBookById(id);
         return "redirect:/book/allBook";
     }
+
+    //查询书籍
+    @RequestMapping("/queryBook")
+    public String queryBook(String queryBookName, Model model) {
+        Books books = bookService.queryBookByName(queryBookName);
+        List<Books> list = new ArrayList<>();
+        list.add(books);
+        if (books == null) {
+            list = bookService.queryAllBook();
+        }
+        model.addAttribute("list", list);
+        return "allBook";
+    }
+
 }
