@@ -12,7 +12,7 @@ public interface BookMapper {
     //根据id删除一个Book
     int deleteBookById(@Param("bookID") int id);
 
-    //更新Book
+    /*更新Book*/
     int updateBook(Books books);
 
     //根据id查询,返回一个Book
