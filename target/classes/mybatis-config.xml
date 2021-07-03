@@ -7,6 +7,6 @@
         <package name="com.study.pojo"/>
     </typeAliases>
     <mappers>
-        <mapper resource="com/study/dao/BookMapper.xml"/>
+        <mapper resource="mapper/BookMapper.xml"/>
     </mappers>
 </configuration>

@@ -2,7 +2,6 @@ package com.study.controller;
 
 import com.study.pojo.Books;
 import com.study.service.BookService;
-import com.study.service.BookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.util.List;
 

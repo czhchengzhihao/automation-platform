@@ -2,7 +2,7 @@
 <html>
   <head>
     <head>
-      <title>首页</title>
+      <title>书籍展示</title>
       <style type="text/css">
         a {
           text-decoration: none;

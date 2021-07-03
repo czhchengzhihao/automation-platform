@@ -1,13 +1,18 @@
-package com.study.service;
+package com.study.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.study.dao.BookMapper;
 import com.study.pojo.Books;
+import com.study.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
-    //调用dao层的操作，设置一个set接口，方便Spring管理
+    //service 调dao层：组合Dao
+    @Autowired
     private BookMapper bookMapper;
 
     public void setBookMapper(BookMapper bookMapper) {

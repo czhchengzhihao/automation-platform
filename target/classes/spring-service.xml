@@ -8,20 +8,20 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <!-- 扫描service相关的bean -->
-    <context:component-scan base-package="com.study.service" />
+    <!-- 1.扫描impl相关的bean -->
+    <context:component-scan base-package="com.study.impl"/>
 
-    <!--BookServiceImpl注入到IOC容器中-->
-    <bean id="BookServiceImpl" class="com.study.service.BookServiceImpl">
+    <!--2.BookServiceImpl注入到IOC容器中,可以通过配置，也可以通过注释-->
+    <bean id="BookServiceImpl" class="com.study.impl.BookServiceImpl">
         <property name="bookMapper" ref="bookMapper"/>
     </bean>
 
-    <!-- 配置事务管理器 -->
+    <!--3.配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!-- 注入数据库连接池 -->
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
     </bean>
-    <!-- 通知 -->
+    <!--4.aop事务支持 -->
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <!-- 传播行为 -->
@@ -33,6 +33,6 @@
     <aop:config>
         <aop:pointcut id="txPointCut" expression="execution(* com.study.dao.*.*(..))"/>
         <!-- 将事务增强与切入点组合（织入事务切面） -->
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
     </aop:config>
 </beans>
